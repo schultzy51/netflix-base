@@ -10,45 +10,54 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
-
-jar {
-    baseName = 'base'
-    version =  '0.1.0'
-}
-
-repositories {
-    jcenter()
-    mavenCentral()
-    maven {
-        url 'http://repo.spring.io/milestone'
-    }
-}
-
-dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web") {
-        exclude module: "spring-boot-starter-tomcat"
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'http://repo.spring.io/milestone'
+        }
     }
 
-    compile("org.springframework.boot:spring-boot-starter-jetty")
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+}
 
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+subprojects {
 
-    compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.M3")
-    compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.M3")
-    compile("org.springframework.cloud:spring-cloud-starter-hystrix:1.0.0.M3")
-    compile("org.springframework.cloud:spring-cloud-starter-hystrix-dashboard:1.0.0.M3")
-    compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.M3")
+}
 
-    compile("org.springframework.cloud:spring-cloud-config-client:1.0.0.M3")
+project(':main-app') {
+    apply plugin: 'spring-boot'
+    apply plugin: 'java'
+    apply plugin: 'war'
 
-    testCompile("junit:junit")
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web") {
+            exclude module: "spring-boot-starter-tomcat"
+        }
+
+        compile("org.springframework.boot:spring-boot-starter-jetty")
+
+        compile("org.springframework.boot:spring-boot-starter-actuator")
+
+        compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.M3")
+        compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.M3")
+        compile("org.springframework.cloud:spring-cloud-starter-hystrix:1.0.0.M3")
+        compile("org.springframework.cloud:spring-cloud-starter-hystrix-dashboard:1.0.0.M3")
+        compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.M3")
+
+        compile("org.springframework.cloud:spring-cloud-config-client:1.0.0.M3")
+
+        testCompile("junit:junit")
+    }
+
+    jar {
+        baseName = 'base'
+        version = '0.1.0'
+    }
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+    gradleVersion = '2.2.1'
 }
