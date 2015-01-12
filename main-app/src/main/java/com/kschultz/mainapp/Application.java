@@ -1,7 +1,7 @@
-package com.kschultz.base;
+package com.kschultz.mainapp;
 
-import com.kschultz.base.config.NetflixConfig;
-import com.kschultz.base.config.WebConfig;
+import com.kschultz.mainapp.config.NetflixConfig;
+import com.kschultz.mainapp.config.WebConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;

@@ -1,0 +1,20 @@
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    metadataMap:
+      instanceId: "KSCHULTZTEST"
+      apiTargeting: 0.0.0
+      apiversion: 0.0.0
+      internalTargeting: something
+    hostname: example-app-${random.value}
+    appGroupName: example-app
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+server:
+  port: 8761
+
