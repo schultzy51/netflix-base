@@ -63,6 +63,21 @@ project(':eureka-server') {
     }
 }
 
+project(':zuul-server') {
+    apply plugin: 'spring-boot'
+    apply plugin: 'java'
+
+    dependencies {
+        compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1")
+        compile("org.springframework.cloud:spring-cloud-starter-zuul:1.0.0.RC1")
+
+        compile("org.springframework.boot:spring-boot-starter-web")
+        compile("org.springframework.boot:spring-boot-starter-actuator")
+
+        testCompile("junit:junit")
+    }
+}
+
 project(':cloud-config-server') {
     apply plugin: 'spring-boot'
     apply plugin: 'java'

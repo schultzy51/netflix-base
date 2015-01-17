@@ -1,0 +1,11 @@
+zuul:
+  routes:
+    config:
+      path: /config/**
+      serviceId: configserver
+    eureka:
+      path: /eureka/**
+      serviceId: eureka-server
+    main-app:
+      path: /main/**
+      serviceId: main-app
