@@ -30,37 +30,22 @@ subprojects {
 project(':main-app') {
     apply plugin: 'spring-boot'
     apply plugin: 'java'
-    apply plugin: 'war'
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter-web") {
-            exclude module: "spring-boot-starter-tomcat"
-        }
-
-        compile("org.springframework.boot:spring-boot-starter-jetty")
-
-        compile("org.springframework.boot:spring-boot-starter-actuator")
-
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1")
         compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.RC1")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix:1.0.0.RC1")
-        compile("org.springframework.cloud:spring-cloud-starter-hystrix-dashboard:1.0.0.RC1")
-
         compile("org.springframework.cloud:spring-cloud-config-client:1.0.0.RC1")
 
-        testCompile("junit:junit")
-    }
+        compile("org.springframework.boot:spring-boot-starter-web")
+        compile("org.springframework.boot:spring-boot-starter-actuator")
 
-    jar {
-        baseName = 'base'
-        version = '0.1.0'
+        testCompile("junit:junit")
     }
 }
 
 project(':eureka-server') {
     apply plugin: 'spring-boot'
     apply plugin: 'java'
-    apply plugin: 'war'
 
     dependencies {
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1") {
@@ -70,15 +55,13 @@ project(':eureka-server') {
             exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
         }
 
-        compile("org.springframework.boot:spring-boot-starter-jetty") {
-            exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
-        }
         compile("org.springframework.boot:spring-boot-starter-actuator") {
             exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
         }
 
         testCompile("junit:junit")
     }
+}
 
 project(':cloud-config-server') {
     apply plugin: 'spring-boot'
