@@ -1,4 +1,4 @@
-include 'main-app'
 include 'eureka-server'
+include 'main-app'
 
 rootProject.name = 'netflix-base'
