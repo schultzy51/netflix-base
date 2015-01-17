@@ -5,3 +5,4 @@ classes
 *.iml
 *.ipr
 *.iws
+.gradletasknamecache
