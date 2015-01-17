@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    bootstrap:
+      enabled: false
+    config:
+      server:
+        git:
+          uri: https://github.com/schultzy51/netflix-base-cloud-config
+          basedir: target/config
+
+server:
+  port: 8888
+
+management:
+  context-path: /admin
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
