@@ -5,10 +5,15 @@ spring:
   application:
     name: zuul-server
   cloud:
+    bootstrap:
+      enabled: true
     config:
       discovery:
         enabled: true
       failFast: true
+
+management:
+  context-path: /admin
 
 eureka:
   client:
@@ -17,3 +22,5 @@ eureka:
   instance:
     hostname: localhost
     leaseRenewalIntervalInSeconds: 10
+    metatdataMap:
+      instanceId: main-app-${random.int}
