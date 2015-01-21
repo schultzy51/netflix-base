@@ -1,0 +1,49 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    bootstrap:
+      enabled: false
+
+management:
+  context-path: /admin
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    metatdataMap:
+      instanceId: main-app-${random.int}
+      
+---
+
+spring:
+  profiles: docker
+  application:
+    name: eureka-server
+  cloud:
+    bootstrap:
+      enabled: false
+
+management:
+  context-path: /admin
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    metatdataMap:
+      instanceId: main-app-${random.int}

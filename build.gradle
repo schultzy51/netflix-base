@@ -24,12 +24,14 @@ allprojects {
 }
 
 subprojects {
+    apply plugin: 'java'
 
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
 }
 
-project(':main-app') {
+project(':main') {
     apply plugin: 'spring-boot'
-    apply plugin: 'java'
 
     dependencies {
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1")
@@ -41,13 +43,18 @@ project(':main-app') {
 
         testCompile("junit:junit")
     }
+
+    jar {
+        baseName = 'main'
+        version = '0.0.1'
+    }
 }
 
-project(':eureka-server') {
+project(':eureka') {
     apply plugin: 'spring-boot'
-    apply plugin: 'java'
 
     dependencies {
+        compile("com.netflix.eureka:eureka-client:1.1.145")
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1") {
             exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
         }
@@ -61,11 +68,15 @@ project(':eureka-server') {
 
         testCompile("junit:junit")
     }
+
+    jar {
+        baseName = 'eureka'
+        version = '0.0.1'
+    }
 }
 
-project(':zuul-server') {
+project(':zuul') {
     apply plugin: 'spring-boot'
-    apply plugin: 'java'
 
     dependencies {
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1")
@@ -78,11 +89,15 @@ project(':zuul-server') {
 
         testCompile("junit:junit")
     }
+
+    jar {
+        baseName = 'zuul'
+        version = '0.0.1'
+    }
 }
 
-project(':cloud-config-server') {
+project(':cloud-config') {
     apply plugin: 'spring-boot'
-    apply plugin: 'java'
 
     dependencies {
         compile("org.springframework.cloud:spring-cloud-starter-parent:1.0.0.RC1")
@@ -91,8 +106,13 @@ project(':cloud-config-server') {
 
         compile("org.springframework.boot:spring-boot-starter-web")
         compile("org.springframework.boot:spring-boot-starter-actuator")
-        
+
         testCompile("junit:junit")
+    }
+
+    jar {
+        baseName = 'cloud-config'
+        version = '0.0.1'
     }
 }
 

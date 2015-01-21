@@ -1,6 +1,6 @@
-include 'cloud-config-server'
-include 'eureka-server'
-include 'main-app'
-include 'zuul-server'
+include 'cloud-config'
+include 'eureka'
+include 'main'
+include 'zuul'
 
 rootProject.name = 'netflix-base'
