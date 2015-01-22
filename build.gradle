@@ -69,6 +69,12 @@ project(':eureka') {
         testCompile("junit:junit")
     }
 
+    // https://github.com/spring-cloud/spring-cloud-netflix/issues/22
+    // http://projects.spring.io/spring-cloud/spring-cloud.html#_service_discovery_eureka_server
+    springBoot {
+        requiresUnpack = ['com.netflix.eureka:eureka-core', 'com.netflix.eureka:eureka-client']
+    }
+
     jar {
         baseName = 'eureka'
         version = '0.0.1'
