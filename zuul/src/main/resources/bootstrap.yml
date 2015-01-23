@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: zuul-server
+    name: zuul
   cloud:
     bootstrap:
       enabled: true
@@ -16,11 +16,11 @@ management:
   context-path: /admin
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
     leaseRenewalIntervalInSeconds: 10
-    metatdataMap:
-      instanceId: main-app-${random.int}
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.int}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
