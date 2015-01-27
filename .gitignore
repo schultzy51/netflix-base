@@ -1,3 +1,7 @@
+# Custom
+
+.gradletasknamecache
+
 ### https://raw.github.com/github/gitignore/19e774822bbb640c6055098aed307b43c1ee8677/Gradle.gitignore
 
 .gradle
