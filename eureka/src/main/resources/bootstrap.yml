@@ -4,32 +4,6 @@ server:
 spring:
   application:
     name: eureka
-  cloud:
-    bootstrap:
-      enabled: false
-
-management:
-  context-path: /admin
-
-eureka:
-  instance:
-    hostname: eureka1
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${spring.application.name}:${random.int}
-  client:
-    serviceUrl:
-      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/,http://eureka4:8764/eureka/
-
----
-
-spring:
-  profiles: docker
-  application:
-    name: eureka
-  cloud:
-    bootstrap:
-      enabled: false
 
 management:
   context-path: /admin
